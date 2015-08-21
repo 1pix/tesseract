@@ -1,2 +1,2 @@
-# cat=basic//; type=user[EXT:tesseract/class.tx_tesseract_emconfhelper.php:tx_tesseract_emconfhelper->installationCheck]; label=LLL:EXT:tesseract/locallang.xml:installationCheck.label
+# cat=basic//; type=user[Tesseract\Tesseract\Utility\ExtensionManagerConfigurationHelper->installationCheck]; label=LLL:EXT:tesseract/locallang.xml:installationCheck.label
 installationCheck = 0

@@ -1,38 +1,28 @@
 <?php
-/***************************************************************
-*  Copyright notice
-*
-*  (c) 2008-2010 Francois Suter (Cobweb) <typo3@cobweb.ch>
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+namespace Tesseract\Tesseract\Component;
+
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 /**
  * Interface for Data Controllers when interacting with other components
- * during output production
+ * during output production.
  *
- * @author		Francois Suter (Cobweb) <typo3@cobweb.ch>
- * @package		TYPO3
- * @subpackage	tx_tesseract
- *
- * $Id$
+ * @author Francois Suter (Cobweb) <typo3@cobweb.ch>
+ * @package TYPO3
+ * @subpackage tx_tesseract
  */
-interface tx_tesseract_datacontroller_output {
+interface DataControllerOutputInterface {
 	/**
 	 * Returns a string that identifies the controller.
 	 *
@@ -60,7 +50,7 @@ interface tx_tesseract_datacontroller_output {
 	 * The controller's data will depend on its context. For a FE controller, this will
 	 * be the corresponding tt_content record.
 	 *
-	 * @throws tx_tesseract_exception
+	 * @throws \Tesseract\Tesseract\Exception\Exception
 	 * @param string $key Key to fetch the data with
 	 * @return mixed The relevant data
 	 */
@@ -82,7 +72,7 @@ interface tx_tesseract_datacontroller_output {
 	 * The controller's arguments will depend on its context. For a FE controller, this will
 	 * be the variables submitted to it (piVars in the case of a pibase controller).
 	 *
-	 * @throws tx_tesseract_exception
+	 * @throws \Tesseract\Tesseract\Exception\Exception
 	 * @param string $key Key to fetch the argument with
 	 * @return mixed The relevant data
 	 */
@@ -101,7 +91,7 @@ interface tx_tesseract_datacontroller_output {
 	 * @param mixed $debugData An optional variable containing additional debugging information
 	 * @return void
 	 */
-	public function addMessage($key, $message, $title = '', $status = t3lib_FlashMessage::INFO, $debugData = NULL);
+	public function addMessage($key, $message, $title = '', $status = \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO, $debugData = NULL);
 
 	/**
 	 * Returns the complete message queue
@@ -125,4 +115,3 @@ interface tx_tesseract_datacontroller_output {
 	 */
 	public function getDebug() ;
 }
-?>
