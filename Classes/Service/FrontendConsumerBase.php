@@ -33,7 +33,7 @@ abstract class FrontendConsumerBase extends ConsumerBase {
 	 * @param array $conf TypoScript configuration for the extension
 	 */
 	public function setTypoScript(array $conf) {
-		$this->$typoScriptConfiguration = $conf;
+		$this->typoScriptConfiguration = $conf;
 	}
 
 	/**
