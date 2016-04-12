@@ -21,5 +21,6 @@ namespace Tesseract\Tesseract\Exception;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-class Exception extends \Exception {
+class Exception extends \Exception
+{
 }

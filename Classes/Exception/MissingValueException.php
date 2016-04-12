@@ -21,5 +21,6 @@ namespace Tesseract\Tesseract\Exception;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-class MissingValueException extends \Exception {
+class MissingValueException extends \Exception
+{
 }

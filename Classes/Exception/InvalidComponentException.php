@@ -23,5 +23,6 @@ namespace Tesseract\Tesseract\Exception;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-class InvalidComponentException extends \Exception {
+class InvalidComponentException extends \Exception
+{
 }

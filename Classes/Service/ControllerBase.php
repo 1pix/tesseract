@@ -24,24 +24,26 @@ use Tesseract\Tesseract\Component\DataControllerInterface;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-abstract class ControllerBase extends AbstractService implements DataControllerInterface {
-	/**
-	 * Primary key of the controller record
-	 *
-	 * @var	integer
-	 */
-	protected $uid;
+abstract class ControllerBase extends AbstractService implements DataControllerInterface
+{
+    /**
+     * Primary key of the controller record
+     *
+     * @var    integer
+     */
+    protected $uid;
 
-// Controller interface methods
-// (implement only methods that make sense here)
+    // Controller interface methods
+    // (implement only methods that make sense here)
 
-	/**
-	/**
+    /**
+     * /**
      * Stores the ID of the controller.
      *
      * @param integer $id Primary key of the controller instance
      */
-	public function loadData($id) {
-		$this->uid = $id;
+    public function loadData($id)
+    {
+        $this->uid = $id;
     }
 }

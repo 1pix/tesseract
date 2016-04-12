@@ -22,27 +22,28 @@ namespace Tesseract\Tesseract\Component;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-interface DataControllerInterface {
+interface DataControllerInterface
+{
 
-	/**
-	 * This method is used to load the details about the controller
-	 * This is mostly meant to match the other interfaces. In effect,
-	 * it is really just about storing the controller's id
-	 *
-	 * @param integer $uid ID of the controller
-	 * @return void
-	 */
-	public function loadData($uid);
+    /**
+     * This method is used to load the details about the controller
+     * This is mostly meant to match the other interfaces. In effect,
+     * it is really just about storing the controller's id
+     *
+     * @param integer $uid ID of the controller
+     * @return void
+     */
+    public function loadData($uid);
 
-	/**
-	 * This method should return the Data Provider that the controller
-	 * should pass to the Data Consumer, according to the relations defined
-	 * by the controller
-	 * NOTE: this is essentially meant to be used in the BE, when the
-	 * Data Consumer must be "put in touch" with its Data Provider in order to
-	 * know what data will be available, for mapping purposes
-	 *
-	 * @return \Tesseract\Tesseract\Component\DataProvider An object implementing the Data Provider interface
-	 */
-	public function getRelatedProvider();
+    /**
+     * This method should return the Data Provider that the controller
+     * should pass to the Data Consumer, according to the relations defined
+     * by the controller
+     * NOTE: this is essentially meant to be used in the BE, when the
+     * Data Consumer must be "put in touch" with its Data Provider in order to
+     * know what data will be available, for mapping purposes
+     *
+     * @return \Tesseract\Tesseract\Component\DataProviderInterface An object implementing the Data Provider interface
+     */
+    public function getRelatedProvider();
 }

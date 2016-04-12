@@ -21,51 +21,52 @@ namespace Tesseract\Tesseract\Component;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-interface DataConsumerInterface {
+interface DataConsumerInterface
+{
 
-	/**
-	 * This method returns the type of data structure that the Data Consumer can use
-	 *
-	 * @return	string	type of used data structures
-	 */
-	public function getAcceptedDataStructure();
+    /**
+     * This method returns the type of data structure that the Data Consumer can use
+     *
+     * @return    string    type of used data structures
+     */
+    public function getAcceptedDataStructure();
 
-	/**
-	 * This method indicates whether the Data Consumer can use the type of data structure requested or not
-	 *
-	 * @param	string		$type: type of data structure
-	 * @return	boolean		true if it can use the requested type, false otherwise
-	 */
-	public function acceptsDataStructure($type);
+    /**
+     * This method indicates whether the Data Consumer can use the type of data structure requested or not
+     *
+     * @param    string $type : type of data structure
+     * @return    boolean        true if it can use the requested type, false otherwise
+     */
+    public function acceptsDataStructure($type);
 
-	/**
-	 * This method is used to pass a data structure to the Data Consumer
-	 *
-	 * @param 	array	$structure: standardised data structure
-	 * @return	void
-	 */
-	public function setDataStructure($structure);
+    /**
+     * This method is used to pass a data structure to the Data Consumer
+     *
+     * @param    array $structure : standardised data structure
+     * @return    void
+     */
+    public function setDataStructure($structure);
 
-	/**
-	 * This method is used to pass a Data Filter structure to the Data Consumer
-	 *
-	 * @param	array	$filter: Data Filter structure
-	 * @return	void
-	 */
-	public function setDataFilter($filter);
+    /**
+     * This method is used to pass a Data Filter structure to the Data Consumer
+     *
+     * @param    array $filter : Data Filter structure
+     * @return    void
+     */
+    public function setDataFilter($filter);
 
-	/**
-	 * This method starts whatever rendering process the Data Consumer is programmed to do
-	 *
-	 * @return	void
-	 */
-	public function startProcess();
+    /**
+     * This method starts whatever rendering process the Data Consumer is programmed to do
+     *
+     * @return    void
+     */
+    public function startProcess();
 
-	/**
-	 * This method returns the result of the work done by the Data Consumer (FE output or whatever else)
-	 * or displays an error message if no structure was set
-	 *
-	 * @return	mixed	the result of the Data Consumer's work
-	 */
-	public function getResult();
+    /**
+     * This method returns the result of the work done by the Data Consumer (FE output or whatever else)
+     * or displays an error message if no structure was set
+     *
+     * @return    mixed    the result of the Data Consumer's work
+     */
+    public function getResult();
 }

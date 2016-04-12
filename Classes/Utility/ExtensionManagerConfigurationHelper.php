@@ -25,64 +25,68 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @package TYPO3
  * @subpackage tx_tesseract
  */
-class ExtensionManagerConfigurationHelper {
-	protected static $extensionsList = array(
-		'tesseract',
-		'expressions',
-		'overlays',
-		'context',
-		'displaycontroller',
-		'datafilter',
-		'dataquery',
-		'templatedisplay'
-	);
+class ExtensionManagerConfigurationHelper
+{
+    protected static $extensionsList = array(
+            'tesseract',
+            'expressions',
+            'overlays',
+            'context',
+            'displaycontroller',
+            'datafilter',
+            'dataquery',
+            'templatedisplay'
+    );
 
-	public function  __construct() {
-		$GLOBALS['LANG']->includeLLFile('EXT:tesseract/locallang.xml');
-	}
+    public function __construct()
+    {
+        $GLOBALS['LANG']->includeLLFile('EXT:tesseract/locallang.xml');
+    }
 
-	/**
-	 * Returns a list with the status of all "core" Tesseract extensions.
-	 *
-	 * @param array	 $params Information about the field to be rendered
-	 * @param \TYPO3\CMS\Core\TypoScript\ConfigurationForm $parentObject The calling parent object.
-	 * @return string The HTML selector
-	 */
-	public function installationCheck(array $params, $parentObject) {
-		$checkText = '<p style="margin-bottom: 10px;"><strong>' . $GLOBALS['LANG']->getLL('installationCheck.warning') . '</strong></p>';
-		foreach (self::$extensionsList as $anExtension) {
-			$checkText .= $this->wrapMessage(
-				$anExtension,
-				ExtensionManagementUtility::isLoaded($anExtension)
-			);
-		}
-		return $checkText;
-	}
+    /**
+     * Returns a list with the status of all "core" Tesseract extensions.
+     *
+     * @param array $params Information about the field to be rendered
+     * @param \TYPO3\CMS\Core\TypoScript\ConfigurationForm $parentObject The calling parent object.
+     * @return string The HTML selector
+     */
+    public function installationCheck(array $params, $parentObject)
+    {
+        $checkText = '<p style="margin-bottom: 10px;"><strong>' . $GLOBALS['LANG']->getLL('installationCheck.warning') . '</strong></p>';
+        foreach (self::$extensionsList as $anExtension) {
+            $checkText .= $this->wrapMessage(
+                    $anExtension,
+                    ExtensionManagementUtility::isLoaded($anExtension)
+            );
+        }
+        return $checkText;
+    }
 
-	/**
-	 * Prepares an installation status message for a given extension.
-	 *
-	 * @param string $extension The extension key
-	 * @param boolean $status True if extension is installed, false otherwise
-	 * @return string HTML for the message
-	 */
-	protected function wrapMessage($extension, $status) {
-			// Assemble flash messages and render it
-		$severity = FlashMessage::OK;
-		$messageText = $GLOBALS['LANG']->getLL('installationCheck.extensionInstalled');
-		$title = $GLOBALS['LANG']->getLL('installationCheck.extension') . ': ' . $extension;
-		if (!$status) {
-			$severity = FlashMessage::WARNING;
-			$messageText = $GLOBALS['LANG']->getLL('installationCheck.extensionNotInstalled');
-		}
+    /**
+     * Prepares an installation status message for a given extension.
+     *
+     * @param string $extension The extension key
+     * @param boolean $status True if extension is installed, false otherwise
+     * @return string HTML for the message
+     */
+    protected function wrapMessage($extension, $status)
+    {
+        // Assemble flash messages and render it
+        $severity = FlashMessage::OK;
+        $messageText = $GLOBALS['LANG']->getLL('installationCheck.extensionInstalled');
+        $title = $GLOBALS['LANG']->getLL('installationCheck.extension') . ': ' . $extension;
+        if (!$status) {
+            $severity = FlashMessage::WARNING;
+            $messageText = $GLOBALS['LANG']->getLL('installationCheck.extensionNotInstalled');
+        }
 
-		/** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
-		$flashMessage = GeneralUtility::makeInstance(
-			'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-			$messageText,
-			$title,
-			$severity
-		);
-		return $flashMessage->render();
-	}
+        /** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+        $flashMessage = GeneralUtility::makeInstance(
+                'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
+                $messageText,
+                $title,
+                $severity
+        );
+        return $flashMessage->render();
+    }
 }
