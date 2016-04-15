@@ -2,6 +2,7 @@
 
 	* Cleaned up extension configuration helper, resolves #75638
 	* Cleaned up code, resolves #75639
+	* Moved language file to XLIFF, resolves #75640
 
 2016-04-13 Francois Suter (Cobweb)  <typo3@cobweb.ch>
 

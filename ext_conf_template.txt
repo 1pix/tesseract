@@ -1,2 +1,2 @@
-# cat=basic//; type=user[Tesseract\Tesseract\Utility\ExtensionManagerConfigurationHelper->installationCheck]; label=LLL:EXT:tesseract/locallang.xml:installationCheck.label
+# cat=basic//; type=user[Tesseract\Tesseract\Utility\ExtensionManagerConfigurationHelper->installationCheck]; label=LLL:EXT:tesseract/Resources/Private/Language/locallang.xlf:installationCheck.label
 installationCheck = 0

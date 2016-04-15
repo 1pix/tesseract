@@ -46,7 +46,7 @@ class ExtensionManagerConfigurationHelper
 
     public function __construct()
     {
-        $GLOBALS['LANG']->includeLLFile('EXT:tesseract/locallang.xml');
+        $GLOBALS['LANG']->includeLLFile('EXT:tesseract/Resources/Private/Language/locallang.xlf');
         $this->messageQueue = GeneralUtility::makeInstance(
                 FlashMessageQueue::class,
                 'tx_tesseract'

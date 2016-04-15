@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-04-15T07:47:00Z" product-name="tesseract">
+		<header/>
+		<body>
+			<trans-unit id="installationCheck.extension" xml:space="preserve">
+				<source>Extension</source>
+			</trans-unit>
+			<trans-unit id="installationCheck.label" xml:space="preserve">
+				<source>Tesseract installation check: This list gives you a quick overview of all the base extensions to install in order to have a working Tesseract setup. There are more extensions in the TER (search for &quot;tesseract&quot;).</source>
+			</trans-unit>
+			<trans-unit id="installationCheck.warning" xml:space="preserve">
+				<source>Make sure to install the extensions in the order they appear below, from top to bottom.</source>
+			</trans-unit>
+			<trans-unit id="installationCheck.extensionInstalled" xml:space="preserve">
+				<source>Installed</source>
+			</trans-unit>
+			<trans-unit id="installationCheck.extensionNotInstalled" xml:space="preserve">
+				<source>Not installed</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
