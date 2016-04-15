@@ -2,11 +2,24 @@
 	"name": "tesseract/tesseract",
 	"type": "typo3-cms-extension",
 	"description": "This projects covers a suite of extensions designed to facilitate the extraction of data and their display, using controllers and standard data formats. More info on http://www.typo3-tesseract.com/",
-	"license": ["GPL-2.0+"],
+	"license": [
+		"GPL-2.0+"
+	],
+	"authors": [
+		{
+			"name": "Francois Suter",
+			"role": "Developer"
+		}
+	],
 	"autoload": {
 		"psr-4": {
 			"Tesseract\\Tesseract\\": "Classes/"
 		}
+	},
+	"version": "2.0.0",
+	"require": {
+		"typo3/cms-core": ">=7.6.0,<8.0",
+		"cobweb/expressions": ">=2.0.0"
 	},
 	"replace": {
 		"tesseract": "self.version",
