@@ -9,7 +9,7 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="installationCheck.extension">Extension</label>
-			<label index="installationCheck.label">Tesseract installation check: The list below gives you a quick overview of all the base extensions to install in order to have a working Tesseract setup. There are more extensions in the TER (search for "tesseract").</label>
+			<label index="installationCheck.label">Tesseract installation check: This list gives you a quick overview of all the base extensions to install in order to have a working Tesseract setup. There are more extensions in the TER (search for "tesseract").</label>
 			<label index="installationCheck.warning">Make sure to install the extensions in the order they appear below, from top to bottom.</label>
 			<label index="installationCheck.extensionInstalled">Installed</label>
 			<label index="installationCheck.extensionNotInstalled">Not installed</label>

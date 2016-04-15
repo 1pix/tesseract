@@ -15,6 +15,7 @@ namespace Tesseract\Tesseract\Utility;
  */
 
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -38,9 +39,18 @@ class ExtensionManagerConfigurationHelper
             'templatedisplay'
     );
 
+    /**
+     * @var FlashMessageQueue
+     */
+    protected $messageQueue;
+
     public function __construct()
     {
         $GLOBALS['LANG']->includeLLFile('EXT:tesseract/locallang.xml');
+        $this->messageQueue = GeneralUtility::makeInstance(
+                FlashMessageQueue::class,
+                'tx_tesseract'
+        );
     }
 
     /**
@@ -52,13 +62,14 @@ class ExtensionManagerConfigurationHelper
      */
     public function installationCheck(array $params, $parentObject)
     {
-        $checkText = '<p style="margin-bottom: 10px;"><strong>' . $GLOBALS['LANG']->getLL('installationCheck.warning') . '</strong></p>';
         foreach (self::$extensionsList as $anExtension) {
-            $checkText .= $this->wrapMessage(
+            $this->wrapMessage(
                     $anExtension,
                     ExtensionManagementUtility::isLoaded($anExtension)
             );
         }
+        $checkText = '<p><strong>' . $GLOBALS['LANG']->getLL('installationCheck.warning') . '</strong></p>';
+        $checkText .= $this->messageQueue->renderFlashMessages();
         return $checkText;
     }
 
@@ -67,7 +78,7 @@ class ExtensionManagerConfigurationHelper
      *
      * @param string $extension The extension key
      * @param boolean $status True if extension is installed, false otherwise
-     * @return string HTML for the message
+     * @return void
      */
     protected function wrapMessage($extension, $status)
     {
@@ -80,13 +91,13 @@ class ExtensionManagerConfigurationHelper
             $messageText = $GLOBALS['LANG']->getLL('installationCheck.extensionNotInstalled');
         }
 
-        /** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+        /** @var $flashMessage FlashMessage */
         $flashMessage = GeneralUtility::makeInstance(
-                'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
+                FlashMessage::class,
                 $messageText,
                 $title,
                 $severity
         );
-        return $flashMessage->render();
+        $this->messageQueue->enqueue($flashMessage);
     }
 }
