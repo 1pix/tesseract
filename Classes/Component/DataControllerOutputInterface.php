@@ -14,6 +14,8 @@ namespace Tesseract\Tesseract\Component;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+
 /**
  * Interface for Data Controllers when interacting with other components
  * during output production.
@@ -96,7 +98,7 @@ interface DataControllerOutputInterface
             $key,
             $message,
             $title = '',
-            $status = \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO,
+            $status = AbstractMessage::INFO,
             $debugData = null
     );
 

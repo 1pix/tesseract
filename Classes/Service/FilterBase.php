@@ -76,7 +76,7 @@ abstract class FilterBase extends Component implements DataFilterInterface
     public function loadData($data)
     {
         $this->table = $data['table'];
-        $this->uid = intval($data['uid']);
+        $this->uid = (int)$data['uid'];
         $whereClause = 'uid = ' . $this->uid;
         if (isset($GLOBALS['TSFE'])) {
             $whereClause .= $GLOBALS['TSFE']->sys_page->enableFields($this->table, $GLOBALS['TSFE']->showHiddenRecords);

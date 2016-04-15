@@ -58,7 +58,7 @@ abstract class ConsumerBase extends Component implements DataConsumerInterface
     public function loadData($data)
     {
         $this->table = $data['table'];
-        $this->uid = intval($data['uid']);
+        $this->uid = (int)$data['uid'];
         // Get record where the details of the data display are stored
         $whereClause = 'uid = ' . $this->uid;
         if (isset($GLOBALS['TSFE'])) {

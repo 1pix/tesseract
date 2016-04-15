@@ -19,6 +19,7 @@ use Tesseract\Tesseract\Exception\MissingFileException;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Lang\LanguageService;
 
 /**
  * Utility methods for Tesseract components.
@@ -91,7 +92,7 @@ class Utilities
         // If string starts with "file:", try to resolve FAL reference
         if (strpos($fileParts[0], 'file:') === 0) {
             // Extract the file id
-            $fileUid = intval(substr($fileParts[0], 5));
+            $fileUid = (int)substr($fileParts[0], 5);
             // If valid, try to get the corresponding file object
             if ($fileUid > 0) {
                 try {
@@ -145,7 +146,7 @@ class Utilities
      *
      * @static
      * @param string $language A 2-letter language code
-     * @return \TYPO3\CMS\Lang\LanguageService The language object
+     * @return LanguageService The language object
      */
     public static function getLanguageObject($language = '')
     {
@@ -155,13 +156,13 @@ class Utilities
 
             // If no language object is available, create one
         } else {
-            /** @var $lang \TYPO3\CMS\Lang\LanguageService */
-            $lang = GeneralUtility::makeInstance('TYPO3\\CMS\\Lang\\LanguageService');
+            /** @var $lang LanguageService */
+            $lang = GeneralUtility::makeInstance(LanguageService::class);
             $languageCode = '';
             // Find out which language to use
             if (empty($language)) {
                 // If in the BE, it's taken from the user's preferences
-                if (TYPO3_MODE == 'BE') {
+                if (TYPO3_MODE === 'BE') {
                     $languageCode = $GLOBALS['BE_USER']->uc['lang'];
 
                     // In the FE, we use the config.language TS property

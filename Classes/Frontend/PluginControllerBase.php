@@ -17,6 +17,7 @@ namespace Tesseract\Tesseract\Frontend;
 use Tesseract\Tesseract\Component\DataControllerOutputInterface;
 use Tesseract\Tesseract\Exception\MissingValueException;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Plugin\AbstractPlugin;
 
@@ -72,9 +73,9 @@ abstract class PluginControllerBase extends AbstractPlugin implements DataContro
             $fullTitle = '[' . $key . ']' . ((empty($title)) ? '' : ' ' . $title);
             // The message data that corresponds to the Flash Message is stored directly as a Flash Message object,
             // as this performs input validation on the data
-            /** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+            /** @var $flashMessage FlashMessage */
             $flashMessage = GeneralUtility::makeInstance(
-                    'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
+                    FlashMessage::class,
                     $message,
                     $fullTitle,
                     $status

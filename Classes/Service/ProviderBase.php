@@ -77,7 +77,7 @@ abstract class ProviderBase extends Component implements DataProviderInterface
     public function loadData($data)
     {
         $this->table = $data['table'];
-        $this->uid = intval($data['uid']);
+        $this->uid = (int)$data['uid'];
         $whereClause = 'uid = ' . $this->uid;
         if (isset($GLOBALS['TSFE'])) {
             $whereClause .= $GLOBALS['TSFE']->sys_page->enableFields($this->table, $GLOBALS['TSFE']->showHiddenRecords);
@@ -237,11 +237,11 @@ abstract class ProviderBase extends Component implements DataProviderInterface
                 'filter' => array(),
         );
         // Initialize more data dependent of structure type
-        if ($type == Tesseract::RECORDSET_STRUCTURE_TYPE) {
+        if ($type === Tesseract::RECORDSET_STRUCTURE_TYPE) {
             $this->outputStructure['records'] = array();
             $this->outputStructure['name'] = $tablename;
             $this->outputStructure['header'] = false;
-        } elseif ($type == Tesseract::IDLIST_STRUCTURE_TYPE) {
+        } elseif ($type === Tesseract::IDLIST_STRUCTURE_TYPE) {
             $this->outputStructure['uniqueTable'] = $tablename;
             $this->outputStructure['uidListWithTable'] = '';
         }
