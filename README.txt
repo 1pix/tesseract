@@ -1,1 +1,0 @@
-This extension is just an umbrella for a suite of extensions. It provides a general manual about it (see doc/manual.sxw). It is also used to simplify installation by providing suggestions to the most important extensions composing this suite.

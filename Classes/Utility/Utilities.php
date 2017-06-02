@@ -89,10 +89,16 @@ class Utilities
     {
         // There could be link parameters. Explode the string to get rid of them.
         $fileParts = explode(' ', $filePath);
-        // If string starts with "file:", try to resolve FAL reference
-        if (strpos($fileParts[0], 'file:') === 0) {
+        // If string starts with "file:" or "t3://file?uid=" (since TYPO3 v8), try to resolve FAL reference
+        if (strpos($fileParts[0], 'file:') === 0 || strpos($fileParts[0],'t3://file?uid=') === 0) {
+            // Define the substring length to match depending on link scheme
+            if (strpos($fileParts[0],'t3://file?uid=') === 0) {
+                $substringLength = 14;
+            } else {
+                $substringLength = 5;
+            }
             // Extract the file id
-            $fileUid = (int)substr($fileParts[0], 5);
+            $fileUid = (int)substr($fileParts[0], $substringLength);
             // If valid, try to get the corresponding file object
             if ($fileUid > 0) {
                 try {
@@ -101,7 +107,7 @@ class Utilities
                     if ($fileObject instanceof FileInterface) {
                         $relativePath = $fileObject->getPublicUrl();
 
-                        // No valid reference
+                    // No valid reference
                     } else {
                         throw new MissingFileException(
                                 'No template file found for reference: ' . $filePath,
@@ -116,7 +122,7 @@ class Utilities
                     );
                 }
 
-                // Invalid file id
+            // Invalid file id
             } else {
                 throw new MissingFileException(
                         'No template file found for reference: ' . $filePath,
@@ -124,7 +130,7 @@ class Utilities
                 );
             }
 
-            // If not using a FAL reference syntax, assume it is already a relative path
+        // If not using a FAL reference syntax, assume it is already a relative path
         } else {
             $relativePath = $fileParts[0];
         }

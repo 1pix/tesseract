@@ -32,7 +32,7 @@ EXT: Project Tesseract
         forAdmins, forIntermediates
 
     :Copyright:
-        2008-2016
+        2008-2017
 
     :Author:
         The Tesseract Team
